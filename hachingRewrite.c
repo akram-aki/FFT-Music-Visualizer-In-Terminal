@@ -183,7 +183,7 @@ int main(int argc, char *argv[]) {
     exit(EXIT_FAILURE);
   }
 
-  double *freqArr = alloc(audio_data.num_samples / 2 * sizeof(double));
+  double *freqArr = malloc(audio_data.num_samples / 2 * sizeof(double));
 
   if (freqArr == NULL) {
     fprintf(stderr, "Error: Failed to allocate memory for freqArr.\n");
