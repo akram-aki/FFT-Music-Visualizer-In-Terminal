@@ -7,10 +7,11 @@
   "type": "commonjs",
   "main": "dist/musicReader.js",
   "scripts": {
-    "build": "esbuild musicReader.ts --bundle --outfile=dist/musicReader.js --platform=node --format=cjs",
-    "build:realtime": "esbuild realTimeVisualizer.ts --bundle --outfile=dist/realTimeVisualizer.js --platform=node --format=cjs",
+    "build": "esbuild shazamClone.ts --bundle --outfile=dist/shazamClone.js --platform=node --format=cjs --external:sqlite3",
+    "buildNoBundle": "tsc shazamClone.ts --outDir dist",
+    "build:realtime": "esbuild realTimeVisualizer.ts --bundle --outfile=dist/realTimeVisualizer.js --platform=node --format=cjs  --external:sqlite3",
     "build:both": "npm run build && npm run build:realtime",
-    "start": "node dist/musicReader.js",
+    "start": "node dist/shazamClone.js",
     "start:realtime": "node dist/realTimeVisualizer.js",
     "dev": "npm run build && npm run start",
     "dev:realtime": "npm run build:realtime && npm run start:realtime",
@@ -21,5 +22,7 @@
     "esbuild": "^0.19.0",
     "typescript": "^5.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  }
 }
